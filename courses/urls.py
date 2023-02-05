@@ -4,9 +4,14 @@ from . import views
 
 
 
+
 urlpatterns = [
 
-     path('',views.home),
-     path('hakkimizda',views.hakkimizda)
+     path('',views.index),
+     path('<int:categoryId>',views.getCoursesByCategoryId),
+     path('<str:categoryName>',views.getCoursesByCategoryName, name="courseByCategory"),
+     path('<category>',views.getCoursesByCategory)
+
+
 
 ]
