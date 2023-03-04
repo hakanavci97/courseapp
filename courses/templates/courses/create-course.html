@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block content %} 
+
+{% load static %}
+
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <form action="{% url 'create_course' %}" method="POST" novalidate>
+               {% csrf_token %}
+
+               <div class="div mb-3">
+                    <label class="form-label" for="{{form.title.id_for_label}}">Title</label>
+                    {{form.title}}
+               </div>
+                <div class="div mb-3">
+                    <label class="form-label" for="{{form.description.id_for_label}}">Description</label>
+                    {{form.description}}
+               </div>
+               <div class="div mb-3">
+                    <label class="form-label" for="{{form.imageUrl.id_for_label}}">imageUrl</label>
+                    {{form.imageUrl}}
+               </div>
+               <div class="div mb-3">
+                    <label class="form-label" for="{{form.slug.id_for_label}}">slug</label>
+                    {{form.slug}}
+               </div>
+            
+                {% comment %} <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                   <textarea name="description"  class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">imageUrl</label>
+                   <input type="text" name="imageUrl" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">date</label>
+                   <input type="date" name="date" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="slug" class="form-label">slug</label>
+                   <input type="text" name="slug" class="form-control">
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" name="isActive" class="form-check-input">
+                    <label for="isActive" class="form-check-label">isActive</label>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" name="isHome" class="form-check-input">
+                    <label for="isHome" class="form-check-label">isHome</label>
+                </div>
+             {% endcomment %}
+
+                <button class= "btn btn-primary" type="submit">Kaydet</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
