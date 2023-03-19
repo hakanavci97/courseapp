@@ -42,5 +42,34 @@ class CourseCreateForm(forms.ModelForm):
         }
 
 
+class CourseEditForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        # fields = ('__all__') #tüm alanları getirir
+        fields = ('title','description','imageUrl','slug','categories','isActive')
+        labels = {
+            'title':'Kurs Başlığı',
+            'description':'Açıklama'
+        }
+        widgets = {
+            'title': forms.TextInput(attrs={"class":"form-control"}),
+            'description': forms.Textarea(attrs={"class":"form-control"}),
+            'imageUrl': forms.TextInput(attrs={"class":"form-control"}),
+            'slug': forms.TextInput(attrs={"class":"form-control"}),
+            'categories':forms.SelectMultiple(attrs={"class":"form-control"})
+        }
+        error_messages = {
+            "title":{
+                "required":"Kurs başlığı girmelisiniz",
+                "max_lenght":"maksimum 50 karakter girmelisiniz"
+            },
+            "description": {
+                'required':"kurs açıklaması gereklidir."
+            }
+        }
+
+
+
+
     
 

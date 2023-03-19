@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %} 
+
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/style.css'%}"/>
+
+{% block page_title %}
+
+Edit Course
+
+{% endblock  %}
+
+
+
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <form  method="POST" novalidate>
+               {% csrf_token %}
+               {% for filed in form  %}
+               
+                <div class="div mb-3 {% if filed.errors %} invalid{% endif %}">
+                     {% if filed.errors  %} <div class="div alert alert-danger">{{filed.errors}} </div>{% endif %}
+                    <label class="form-label" for="{{filed.id_for_label}}">{{filed.label}}</label>
+                    {{filed}}
+               </div>
+               {% endfor %}
+                <button class= "btn btn-primary" type="submit">Kaydet</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
