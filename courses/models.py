@@ -19,7 +19,7 @@ class Course(models.Model):
     date = models.DateField(default=datetime.datetime.now())
     isActive = models.BooleanField(default=False)
     isHome = models.BooleanField(default=False)
-    slug = models.SlugField(default="",blank=True,editable=False,unique=True,db_index=True)##daha önce ki kayıtlar için varsayılan değer atandı ve boş geçilemez şartı koyuldu. Bu alan sonradan eklendi.
+    slug = models.SlugField(default="",blank=True,editable=True,unique=True,db_index=True)##daha önce ki kayıtlar için varsayılan değer atandı ve boş geçilemez şartı koyuldu. Bu alan sonradan eklendi.
     # unique tekil alan db_index index atar. blank=True değeri form üzerindeki zorunluluğu kaldırır zaten save() metodunda title slug olarak çevildiriği için tekrar bir değer girmek gerekli değildir. girilse dahi title alanı ile güncellenmektedir.
     # editable=False form üzerinde görünmemesini sağlar.
     # category= models.ForeignKey(Category,default=2,on_delete=models.CASCADE,related_name="kurslar")

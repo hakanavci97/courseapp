@@ -3,7 +3,7 @@
 {% block content %} 
 
 {% load static %}
-
+<link rel="stylesheet" href="{%static 'css/style.css'%}"/>
 
 <div class="container mt-3">
     <div class="row">
@@ -11,22 +11,37 @@
             <form action="{% url 'create_course' %}" method="POST" novalidate>
                {% csrf_token %}
 
-               <div class="div mb-3">
+
+
+
+               {% for filed in form  %}
+               
+                <div class="div mb-3 {% if filed.errors %} invalid{% endif %}">
+                     {% if filed.errors  %} <div class="div alert alert-danger">{{filed.errors}} </div>{% endif %}
+                    <label class="form-label" for="{{filed.id_for_label}}">{{filed.label}}</label>
+                    {{filed}}
+               </div>
+               {% endfor %}
+
+               {% comment %} <div class="div mb-3 {% if form.title.errors %} invalid {% endif %}" >
                     <label class="form-label" for="{{form.title.id_for_label}}">Title</label>
                     {{form.title}}
                </div>
-                <div class="div mb-3">
+                <div class="div mb-3 {% if form.description.errors %} invalid{% endif %}">
+                    {{form.description.errors}}
                     <label class="form-label" for="{{form.description.id_for_label}}">Description</label>
                     {{form.description}}
                </div>
-               <div class="div mb-3">
+               <div class="div mb-3 {% if form.imageUrl.errors %} invalid{% endif %}">
+                    {{form.imageUrl.errors}}
                     <label class="form-label" for="{{form.imageUrl.id_for_label}}">imageUrl</label>
                     {{form.imageUrl}}
                </div>
-               <div class="div mb-3">
+               <div class="div mb-3 {% if form.slug.errors %} invalid{% endif %}">
+                    {{form.slug.errors}}
                     <label class="form-label" for="{{form.slug.id_for_label}}">slug</label>
                     {{form.slug}}
-               </div>
+               </div> {% endcomment %}
             
                 {% comment %} <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
